@@ -21,7 +21,7 @@ class GuestController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {       
         $this->validate($request, [
             'nip'     => 'nullable|numeric|digits: 18',
             'nama'     => 'required',
@@ -50,6 +50,7 @@ class GuestController extends Controller
     public function update(Request $request, guest $guest)
     {
         $this->validate($request, [
+            'nip'   => 'required',
             'nama'     => 'required',
             'jenis_kelamin'   => 'required',
             'nama_instansi'     => 'required',
