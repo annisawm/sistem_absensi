@@ -326,20 +326,21 @@
     <!-- bs-custom-file-input -->
     <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../dist/js/demo.js"></script>
+    <script src="../../dist/js/adminlte.min.js"></script>    
     <!-- Page specific script -->
     <script>
         $("#status" ).change(function() {
             var id=$(this).val();            
-            if (id==1){
-                $('#nip').prop("disabled", false);                
-            } else if(id==2){
-                $('#nip').prop("disabled", true);
-            } else if(id==0){
-                $('#nip').prop("disabled", true);
-            }         
+            // if (id==1){
+            //     $('#nip').prop("disabled", false);                
+            // } else if(id==2){
+            //     $('#nip').prop("disabled", true);
+            // } else if(id==0){
+            //     $('#nip').prop("disabled", true);
+            // }         
+        
+            // TERNARY CONDITION
+            id==1 ? $('#nip').prop("disabled", false) : $('#nip').prop("disabled", true);
 });
     </script>
 </body>
