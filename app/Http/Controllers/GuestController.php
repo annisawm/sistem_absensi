@@ -23,7 +23,7 @@ class GuestController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nip'     => 'required|numeric|digits: 18',
+            'nip'     => 'nullable|numeric|digits: 18',
             'nama'     => 'required',
             'jenis_kelamin'   => 'required',
             'nama_instansi'     => 'required',
