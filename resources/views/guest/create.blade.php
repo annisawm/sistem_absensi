@@ -178,8 +178,23 @@
                                         @csrf
 
                                         <div class="form-group">
+                                            <label class="font-weight-bold">Status Kepegawaian</label>                                            
+                                            <!-- error message untuk title -->                                            
+                                            <select name="status" id="status">
+                                                <option value="0">Pilih</option>
+                                                <option value="1">PNS</option>
+                                                <option value="2">Non PNS</option>
+                                            </select>
+                                            @error('nip')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="font-weight-bold">NIP</label>
-                                            <input type="text"
+                                            <input type="text" id="nip" disabled
                                                 class="form-control @error('nip') is-invalid @enderror" name="nip"
                                                 value="{{ old('nip') }}" placeholder="Masukkan NIP">
 
@@ -315,7 +330,18 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
-    <script></script>
+    <script>
+        $("#status" ).change(function() {
+            var id=$(this).val();            
+            if (id==1){
+                $('#nip').prop("disabled", false);                
+            } else if(id==2){
+                $('#nip').prop("disabled", true);
+            } else if(id==0){
+                $('#nip').prop("disabled", true);
+            }         
+});
+    </script>
 </body>
 
 </html>
