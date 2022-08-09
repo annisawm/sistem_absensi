@@ -9,7 +9,7 @@ class Guest extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama', 'jenis_kelamin', 'nama_instansi', 'jabatan', 'no_hp', 'ttd'
+        'nip','nama', 'jenis_kelamin', 'nama_instansi', 'jabatan', 'no_hp', 'ttd'
     ];
 
     protected $attributes = [
