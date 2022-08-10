@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\SignaturePadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +21,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/guest', GuestController::class);
+Route::resource('/program', ProgramController::class);
+Route::get('signaturepad', [SignaturePadController::class, 'index']);
+Route::post('signaturepad', [SignaturePadController::class, 'upload'])->name('signaturepad.upload');
 
