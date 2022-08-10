@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulir Daftar Hadir</title>
+    <title>Formulir Daftar Kegiatan</title>
     <title>Tambah Data</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -125,7 +125,8 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                        <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
                         <li class="nav-item">
                             <a href="../../index3.html" class="nav-link">
                                 <i class="nav-icon fas fa-columns"></i>
@@ -134,16 +135,9 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="guest" class="nav-link active">
+                            <a href="../forms/general.html" class="nav-link active">
                                 <i class="nav-icon fas fa-edit"></i>
-                                <p>Form Daftar Hadir</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="program" class="nav-link active">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>Form Kegiatan</p>
+                                <p>Form Daftar Kegiatan</p>
                             </a>
                         </li>
                     </ul>
@@ -160,12 +154,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Formulir Daftar Hadir</h1>
+                            <h1>Formulir Daftar Kegiatan</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Formulir Daftar Hadir</li>
+                                <li class="breadcrumb-item active">Formulir Daftar Kegiatan</li>
                             </ol>
                         </div>
                     </div>
@@ -174,66 +168,101 @@
 
             <!-- Main content -->
             <section class="content">
-                <div class="container mt-5">
+                <div class="container mt-5 mb-5">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card border-0 shadow rounded">
                                 <div class="card-body">
-                                    <a href="{{ route('guest.create') }}"
-                                        class="btn btn-md btn-success mb-3">TAMBAH</a>
-                                    <table class="table table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">NIP</th>
-                                                <th scope="col">NAMA</th>
-                                                <th scope="col">JENIS KELAMIN(L/P)</th>
-                                                <th scope="col">NAMA INSTANSI</th>
-                                                <th scope="col">JABATAN</th>
-                                                <th scope="col">NO.HP</th>
-                                                <th scope="col">TTD</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @forelse ($guests as $guest)
-                                                <tr>
-                                                    <td>{{ $guest->nip }}</td>
-                                                    <td>{!! $guest->nama !!}</td>
-                                                    <td>{!! $guest->jenis_kelamin !!}</td>
-                                                    <td>{!! $guest->nama_instansi !!}</td>
-                                                    <td>{!! $guest->jabatan !!}</td>
-                                                    <td>{!! $guest->no_hp !!}</td>
-                                                    <td>{!! $guest->ttd !!}</td>
-                                                    <td class="text-center">
-                                                        <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                            action="{{ route('guest.destroy', $guest->id) }}"
-                                                            method="POST">
-                                                            <a href="{{ route('guest.edit', $guest->id) }}"
-                                                                class="btn btn-sm btn-primary">EDIT</a>
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit"
-                                                                class="btn btn-sm btn-danger">HAPUS</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @empty
-                                                <div class="alert alert-danger">
-                                                    Data Belum Tersedia
+                                    <form action="{{ route('program.update', $program->id) }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">HARI</label>
+                                            <input type="text"
+                                                class="form-control @error('hari') is-invalid @enderror" name="hari"
+                                                value="{{ old('hari', $program->hari) }}" placeholder="Masukkan Hari">
+
+
+                                            @error('hari')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
                                                 </div>
-                                            @endforelse
-                                        </tbody>
-                                    </table>
-                                    {{ $guests->links() }}
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">TANGGAL</label>
+                                            <input type="date"
+                                                class="form-control @error('tanggal') is-invalid @enderror"
+                                                name="tanggal" value="{{ old('tanggal', $program->tanggal) }}"
+                                                placeholder="Masukkan Tanggal">
+
+
+                                            @error('tanggal')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">TEMPAT</label>
+                                            <input type="text"
+                                                class="form-control @error('tempat') is-invalid @enderror"
+                                                name="tempat"
+                                                value="{{ old('tempat', $program->tempat) }}"
+                                                placeholder="Masukkan Tempat">
+
+
+                                            @error('tempat')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">JAM</label>
+                                            <input type="text"
+                                                class="form-control @error('jam') is-invalid @enderror"
+                                                name="jam"
+                                                value="{{ old('jam', $program->jam) }}"
+                                                placeholder="Masukkan Jam">
+
+
+                                            @error('jam')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">ACARA</label>
+                                            <input type="text"
+                                                class="form-control @error('acara') is-invalid @enderror"
+                                                name="acara" value="{{ old('acara', $program->acara) }}"
+                                                placeholder="Masukkan acara">
+
+
+                                            @error('acara')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
+                                        <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
             </section>
         </div>
         <!-- /.content-wrapper -->
-
-        
         <footer class="main-footer">
             <strong>Copyright &copy; 2022 <a href="http://kominfo.situbondokab.go.id/">Dinas Komunikasi, Informatika
                     dan
@@ -252,9 +281,7 @@
     <!-- Bootstrap 4 -->
     <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- bs-custom-file-input -->
-    <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>
+    <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> 
     <!-- Page specific script -->
     <script></script>
 </body>

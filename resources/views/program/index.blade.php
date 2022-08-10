@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Formulir Daftar Hadir</title>
+    <title>Formulir Kegiatan</title>
     <title>Tambah Data</title>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -134,18 +134,12 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="guest" class="nav-link active">
+                            <a href="program" class="nav-link active">
                                 <i class="nav-icon fas fa-edit"></i>
-                                <p>Form Daftar Hadir</p>
+                                <p>Form Daftar Kegiatan</p>
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="program" class="nav-link active">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>Form Kegiatan</p>
-                            </a>
-                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -160,12 +154,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Formulir Daftar Hadir</h1>
+                            <h1>Formulir Daftar Kegiatan</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Formulir Daftar Hadir</li>
+                                <li class="breadcrumb-item active">Formulir Daftar Kegiatan</li>
                             </ol>
                         </div>
                     </div>
@@ -179,40 +173,38 @@
                         <div class="col-md-12">
                             <div class="card border-0 shadow rounded">
                                 <div class="card-body">
-                                    <a href="{{ route('guest.create') }}"
-                                        class="btn btn-md btn-success mb-3">TAMBAH</a>
+                                    <a href="{{ route('program.create') }}" class="btn btn-md btn-success mb-3">TAMBAH</a>
+                                    <a href="/" class="btn btn-md btn-success mb-3">KEMBALI</a>
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th scope="col">NIP</th>
-                                                <th scope="col">NAMA</th>
-                                                <th scope="col">JENIS KELAMIN(L/P)</th>
-                                                <th scope="col">NAMA INSTANSI</th>
-                                                <th scope="col">JABATAN</th>
-                                                <th scope="col">NO.HP</th>
-                                                <th scope="col">TTD</th>
+                                                <th scope="col">HARI</th>
+                                                <th scope="col">TANGGAL</th>
+                                                <th scope="col">TEMPAT</th>
+                                                <th scope="col">JAM</th>
+                                                <th scope="col">ACARA</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($guests as $guest)
+                                            @forelse ($programs as $program)
                                                 <tr>
-                                                    <td>{{ $guest->nip }}</td>
-                                                    <td>{!! $guest->nama !!}</td>
-                                                    <td>{!! $guest->jenis_kelamin !!}</td>
-                                                    <td>{!! $guest->nama_instansi !!}</td>
-                                                    <td>{!! $guest->jabatan !!}</td>
-                                                    <td>{!! $guest->no_hp !!}</td>
-                                                    <td>{!! $guest->ttd !!}</td>
+                                                    <td>{{ $program->hari }}</td>
+                                                    <td>{!! $program->tanggal !!}</td>
+                                                    <td>{!! $program->tempat !!}</td>
+                                                    <td>{!! $program->jam !!}</td>
+                                                    <td>{!! $program->acara !!}</td>
                                                     <td class="text-center">
                                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
-                                                            action="{{ route('guest.destroy', $guest->id) }}"
+                                                            action="{{ route('program.destroy', $program->id) }}"
                                                             method="POST">
-                                                            <a href="{{ route('guest.edit', $guest->id) }}"
+                                                            <a href="{{ route('program.edit', $program->id) }}"
                                                                 class="btn btn-sm btn-primary">EDIT</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
                                                                 class="btn btn-sm btn-danger">HAPUS</button>
+                                                            <a href="guest"
+                                                                class="btn btn-sm btn-primary">Create Link</a>        
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -223,7 +215,7 @@
                                             @endforelse
                                         </tbody>
                                     </table>
-                                    {{ $guests->links() }}
+                                    {{ $programs->links() }}
                                 </div>
                             </div>
                         </div>
@@ -232,8 +224,6 @@
             </section>
         </div>
         <!-- /.content-wrapper -->
-
-        
         <footer class="main-footer">
             <strong>Copyright &copy; 2022 <a href="http://kominfo.situbondokab.go.id/">Dinas Komunikasi, Informatika
                     dan

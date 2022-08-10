@@ -135,9 +135,16 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="../forms/general.html" class="nav-link active">
+                            <a href="guest" class="nav-link active">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>Form Daftar Hadir</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="program" class="nav-link active">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>Form Daftar Kegiatan</p>
                             </a>
                         </li>
                     </ul>

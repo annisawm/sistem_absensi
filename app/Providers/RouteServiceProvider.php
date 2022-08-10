@@ -38,15 +38,16 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-
             Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
+              ->namespace($this->namespace) // <— tambahkan ini
+              ->group(base_path('routes/web.php'));
+      
+      
+            Route::prefix('api')
+              ->namespace($this->namespace) // <— tambahkan ini
+              ->middleware('api')
+              ->group(base_path('routes/api.php'));
+       });      
     }
 
     /**
