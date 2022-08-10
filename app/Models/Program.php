@@ -10,6 +10,6 @@ class Program extends Model
     use HasFactory;
 
     protected $fillable = [
-        'hari', 'tanggal', 'tempat', 'jam', 'acara'
+        'hari', 'jam', 'acara', 'tanggal', 'tempat', 
     ];
 }

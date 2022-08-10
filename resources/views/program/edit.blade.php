@@ -208,22 +208,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="font-weight-bold">TEMPAT</label>
-                                            <input type="text"
-                                                class="form-control @error('tempat') is-invalid @enderror"
-                                                name="tempat"
-                                                value="{{ old('tempat', $program->tempat) }}"
-                                                placeholder="Masukkan Tempat">
-
-
-                                            @error('tempat')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="font-weight-bold">JAM</label>
                                             <input type="text"
                                                 class="form-control @error('jam') is-invalid @enderror"
@@ -248,6 +232,22 @@
 
 
                                             @error('acara')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">TEMPAT</label>
+                                            <input type="text"
+                                                class="form-control @error('tempat') is-invalid @enderror"
+                                                name="tempat"
+                                                value="{{ old('tempat', $program->tempat) }}"
+                                                placeholder="Masukkan Tempat">
+
+
+                                            @error('tempat')
                                                 <div class="alert alert-danger mt-2">
                                                     {{ $message }}
                                                 </div>

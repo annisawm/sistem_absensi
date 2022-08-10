@@ -180,9 +180,9 @@
                                             <tr>
                                                 <th scope="col">HARI</th>
                                                 <th scope="col">TANGGAL</th>
-                                                <th scope="col">TEMPAT</th>
                                                 <th scope="col">JAM</th>
                                                 <th scope="col">ACARA</th>
+                                                <th scope="col">TEMPAT</th>                                             
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -190,9 +190,9 @@
                                                 <tr>
                                                     <td>{{ $program->hari }}</td>
                                                     <td>{!! $program->tanggal !!}</td>
-                                                    <td>{!! $program->tempat !!}</td>
                                                     <td>{!! $program->jam !!}</td>
                                                     <td>{!! $program->acara !!}</td>
+                                                    <td>{!! $program->tempat !!}</td>
                                                     <td class="text-center">
                                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                             action="{{ route('program.destroy', $program->id) }}"

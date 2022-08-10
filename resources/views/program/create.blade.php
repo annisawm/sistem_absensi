@@ -207,21 +207,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="font-weight-bold">Tempat</label>
-                                            <input type="text"
-                                                class="form-control @error('tempat') is-invalid @enderror"
-                                                name="tempat" value="{{ old('tempat') }}"
-                                                placeholder="Masukkan Tempat">
-
-                                            <!-- error message untuk title -->
-                                            @error('tempat')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
                                             <label class="font-weight-bold">JAM</label>
                                             <input type="text"
                                                 class="form-control @error('jam') is-invalid @enderror"
@@ -242,7 +227,7 @@
                                                 class="form-control @error('acara') is-invalid @enderror"
                                                 name="acara" value="{{ old('acara') }}"
                                                 placeholder="Masukkan acara">
-
+                                            <div>
                                             <!-- error message untuk title -->
                                             @error('acara')
                                                 <div class="alert alert-danger mt-2">
@@ -250,6 +235,22 @@
                                                 </div>
                                             @enderror
                                         </div>
+
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">Tempat</label>
+                                            <input type="text"
+                                                class="form-control @error('tempat') is-invalid @enderror"
+                                                name="tempat" value="{{ old('tempat') }}"
+                                                placeholder="Masukkan Tempat">
+
+                                            <!-- error message untuk title -->
+                                            @error('tempat')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                            
                                         <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
                                         <button type="reset" class="btn btn-md btn-warning">RESET</button>
                                     </form>

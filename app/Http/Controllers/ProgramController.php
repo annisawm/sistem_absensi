@@ -24,9 +24,9 @@ class ProgramController extends Controller
         $this->validate($request, [
             'hari'     => 'required',
             'tanggal'     => 'required',
-            'tempat'   => 'required',
             'jam'     => 'required',
             'acara'     => 'required',
+            'tempat'   => 'required',
         ]);
 
         $program = program::create($request->all());
@@ -49,9 +49,9 @@ class ProgramController extends Controller
         $this->validate($request, [
             'hari'     => 'required',
             'tanggal'     => 'required',
-            'tempat'   => 'required',
             'jam'     => 'required',
             'acara'     => 'required',
+            'tempat'   => 'required',
         ]);
 
 
