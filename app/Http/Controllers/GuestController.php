@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Guest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Yajra\DataTables\DataTables;
 
 
 class GuestController extends Controller
 {
     public function index()
     {
-        $guests = guest::latest()->paginate(10);
+        $guests = Guest::get();
+        if (request()->ajax()) {
+            return DataTables::of($guests)
+            ->make(true);
+        }
         return view('guest.index', compact('guests'));
     }
 
