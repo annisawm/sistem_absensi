@@ -22,8 +22,7 @@ Route::get('/', function () {
 
 Route::resource('/guest', GuestController::class);
 Route::resource('/program', ProgramController::class);
-Route::get('signaturepad', [SignaturePadController::class, 'index']);
-Route::post('signaturepad', [SignaturePadController::class, 'upload'])->name('signaturepad.upload');
+
 
 
 // Auth::routes();
