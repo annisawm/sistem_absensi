@@ -169,66 +169,41 @@
             <section class="content">
                 <div class="container mt-5 mb-5">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="card border-0 shadow rounded">
-                                <div class="card-body">
-                                    <form action="{{ route('program.store') }}" method="POST"
-                                        enctype="multipart/form-data">
-
-                                        @csrf
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">ACARA</label>
-                                            <input type="text"
-                                                class="form-control @error('acara') is-invalid @enderror"
-                                                name="acara" value="{{ old('acara') }}"
-                                                placeholder="Masukkan acara">
-                                            <div>
-                                            <!-- error message untuk title -->
-                                            @error('acara')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">TANGGAL KEGIATAN</label>
-                                            <input id="datetimepicker" type="date"
-                                                class="form-control @error('tanggal') is-invalid @enderror"
-                                                name="tanggal" value="{{ old('tanggal') }}"
-                                                placeholder="Masukkan Tanggal">
-
-                                            <!-- error message untuk title -->
-                                            @error('tanggal')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">Tempat</label>
-                                            <input type="text"
-                                                class="form-control @error('tempat') is-invalid @enderror"
-                                                name="tempat" value="{{ old('tempat') }}"
-                                                placeholder="Masukkan Tempat">
-
-                                            <!-- error message untuk title -->
-                                            @error('tempat')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                            
-                                        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                                        <button type="reset" class="btn btn-md btn-warning">RESET</button>
-                                    </form>
-                                </div>
+                        <div class="col-lg-12 margin-tb">
+                            <div class="pull-left">
+                                <h2> Show Program</h2>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn btn-primary" href="{{ route('program.index') }}"> Back</a>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Acara:</strong>
+                                {!! $program->acara !!}
+                            </div>
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Tanggal:</strong>
+                                {!! $program->tanggal !!}
+                             </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Tempat:</strong>
+                                {!! $program->tempat !!}
+                            </div>
+                        </div>
+                        <a class="btn btn-primary" href="../../guest"> Create Link</a>
+                        &nbsp &nbsp &nbsp
+                        <a class="btn btn-primary" href="#"> QR Code</a>
+                    </div>
+                 </div>
             </section>
         </div>
         <!-- /.content-wrapper -->
@@ -244,7 +219,7 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-    
+
     <!-- jQuery -->
     <script src="../../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -254,11 +229,8 @@
     <!-- AdminLTE App -->
     <script src="../../dist/js/adminlte.min.js"></script>    
     <!-- Page specific script -->
-    jQuery('#datetimepicker').datetimepicker();
-   
+    <script>
+    </script>
 </body>
-    <link rel="stylesheet" type="text/css" href="../../jquery.datetimepicker.css"/>
-    <script src="../../jquery.js"></script>
-    <script src="../../../build/jquery.datetimepicker.full.min.js"></script>
 
 </html>

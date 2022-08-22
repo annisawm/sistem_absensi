@@ -179,13 +179,14 @@
                                         @method('PUT')
 
                                         <div class="form-group">
-                                            <label class="font-weight-bold">HARI</label>
+                                            <label class="font-weight-bold">ACARA</label>
                                             <input type="text"
-                                                class="form-control @error('hari') is-invalid @enderror" name="hari"
-                                                value="{{ old('hari', $program->hari) }}" placeholder="Masukkan Hari">
+                                                class="form-control @error('acara') is-invalid @enderror"
+                                                name="acara" value="{{ old('acara', $program->acara) }}"
+                                                placeholder="Masukkan acara">
 
 
-                                            @error('hari')
+                                            @error('acara')
                                                 <div class="alert alert-danger mt-2">
                                                     {{ $message }}
                                                 </div>
@@ -207,36 +208,6 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">JAM</label>
-                                            <input type="text"
-                                                class="form-control @error('jam') is-invalid @enderror"
-                                                name="jam"
-                                                value="{{ old('jam', $program->jam) }}"
-                                                placeholder="Masukkan Jam">
-
-
-                                            @error('jam')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">ACARA</label>
-                                            <input type="text"
-                                                class="form-control @error('acara') is-invalid @enderror"
-                                                name="acara" value="{{ old('acara', $program->acara) }}"
-                                                placeholder="Masukkan acara">
-
-
-                                            @error('acara')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
                                         
                                         <div class="form-group">
                                             <label class="font-weight-bold">TEMPAT</label>

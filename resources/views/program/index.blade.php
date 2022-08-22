@@ -174,37 +174,36 @@
                             <div class="card border-0 shadow rounded">
                                 <div class="card-body">
                                     <a href="{{ route('program.create') }}" class="btn btn-md btn-success mb-3">TAMBAH</a>
-                                    <a href="/" class="btn btn-md btn-success mb-3">KEMBALI</a>
+                                    <a href="/" class="btn btn-md btn-success mb-3">BACK</a>
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th scope="col">HARI</th>
-                                                <th scope="col">TANGGAL</th>
-                                                <th scope="col">JAM</th>
+                                                <th scope="col">NO</th>
                                                 <th scope="col">ACARA</th>
-                                                <th scope="col">TEMPAT</th>                                             
+                                                <th scope="col">TANGGAL</th>
+                                                <th scope="col">TEMPAT</th> 
+                                                <th scope="col">ACTION</th>                                             
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @forelse ($programs as $program)
                                                 <tr>
-                                                    <td>{{ $program->hari }}</td>
-                                                    <td>{!! $program->tanggal !!}</td>
-                                                    <td>{!! $program->jam !!}</td>
+                                                    <td>{!! ++$i !!}</td>
                                                     <td>{!! $program->acara !!}</td>
+                                                    <td>{!! $program->tanggal !!}</td>
                                                     <td>{!! $program->tempat !!}</td>
                                                     <td class="text-center">
                                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                             action="{{ route('program.destroy', $program->id) }}"
                                                             method="POST">
+                                                            <a href="{{ route('program.show', $program->id) }}"
+                                                                class="btn btn-info">VIEW</a>
                                                             <a href="{{ route('program.edit', $program->id) }}"
-                                                                class="btn btn-sm btn-primary">EDIT</a>
+                                                                class="btn btn-primary">EDIT</a>
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit"
-                                                                class="btn btn-sm btn-danger">HAPUS</button>
-                                                            <a href="guest"
-                                                                class="btn btn-sm btn-primary">Create Link</a>        
+                                                                class="btn btn-danger">HAPUS</button>  
                                                         </form>
                                                     </td>
                                                 </tr>

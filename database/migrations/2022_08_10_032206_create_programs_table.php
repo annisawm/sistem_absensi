@@ -15,10 +15,8 @@ class CreateProgramsTable extends Migration
     {
         Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->string('hari');
-            $table->date('tanggal');
-            $table->string('jam');
             $table->string('acara');
+            $table->string('tanggal');
             $table->string('tempat');
             $table->timestamps();
         });

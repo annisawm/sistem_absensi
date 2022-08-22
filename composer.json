@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "*",
+        "simplesoftwareio/simple-qrcode": "^0.0.4@beta",
         "yajra/laravel-datatables-oracle": "*"
     },
     "require-dev": {

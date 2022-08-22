@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,7 +12,8 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::latest()->paginate(10);
-        return view('program.index', compact('programs'));
+        return view('program.index', compact('programs'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
     public function create()
@@ -22,10 +24,8 @@ class ProgramController extends Controller
     public function store(Request $request)
     {       
         $this->validate($request, [
-            'hari'     => 'required',
-            'tanggal'     => 'required',
-            'jam'     => 'required',
             'acara'     => 'required',
+            'tanggal'     => 'required',
             'tempat'   => 'required',
         ]);
 
@@ -38,6 +38,11 @@ class ProgramController extends Controller
         }   
     }
 
+    public function show(program $program)
+    {
+        return view('program.show', compact('program'));
+    } 
+
     public function edit(program $program)
     {
         return view('program.edit', compact('program'));  
@@ -47,26 +52,24 @@ class ProgramController extends Controller
     public function update(Request $request, program $program)
     {
         $this->validate($request, [
-            'hari'     => 'required',
-            'tanggal'     => 'required',
-            'jam'     => 'required',
             'acara'     => 'required',
+            'tanggal'     => 'required',
             'tempat'   => 'required',
         ]);
 
 
-    $program = program::findOrFail($program->id);
+        $program = program::findOrFail($program->id);
 
         $program->update($request->all());
 
-    if($program){
+        if($program){
         
-        return redirect()->route('program.index')->with(['success' => 'Data Kegiatan Berhasil Diupdate!']);
-    }else{
+            return redirect()->route('program.index')->with(['success' => 'Data Kegiatan Berhasil Diupdate!']);
+        }else{
         
-        return redirect()->route('program.index')->with(['error' => 'Data Kegiatan Gagal Diupdate!']);
-    }
-}
+            return redirect()->route('program.index')->with(['error' => 'Data Kegiatan Gagal Diupdate!']);
+        }
+    }   
 
     public function destroy($id)
     {
