@@ -173,8 +173,7 @@
                                                 <th scope="col">NAMA INSTANSI</th>
                                                 <th scope="col">JABATAN</th>
                                                 <th scope="col">NO.HP</th>
-                                                <th scope="col">TTD</th>
-                                                <th scope="col">AKSI</th>
+                                                <th scope="col">TTD</th>                                                
                                             </tr>
                                         </thead>
                                     </table>
@@ -249,44 +248,9 @@
                     {
                         data: 'ttd',
                         name: 'ttd'
-                    },
-                    {
-                        data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false,
-                        align: 'center'
-                    },
+                    },                    
                 ],
-            });
-            var del = function(id) {
-                swal({
-                    title: "Lanjutkan untuk menghapus?",
-                    text: "Klik hapus untuk menghapus data!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "Hapus",
-                    cancelButtonText: "Batal",
-                }).then(
-                    function(result) {
-                        $.ajax({
-                            url: "{{ route('guest.index') }}/" + id,
-                            method: "DELETE",
-                        }).done(function(msg) {
-                            dt.ajax.reload();
-                            swal("Deleted!", "Data sudah terhapus.", "success");
-                        }).fail(function(textStatus) {
-                            alert("Request failed: " + textStatus);
-                        });
-                    },
-                    function(dismiss) {
-                        swal("Cancelled", "Data batal dihapus", "error");
-                    });
-            };
-            $('body').on('click', '.hapus-data', function() {
-                del($(this).attr('data-id'));
-            });
+            });            
         });
     </script>
     <footer class="main-footer">

@@ -229,7 +229,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="font-weight-bold">JENIS KELAMIN</label>
                                             <input type="text"
                                                 class="form-control @error('jenis_kelamin') is-invalid @enderror"
@@ -242,6 +242,13 @@
                                                     {{ $message }}
                                                 </div>
                                             @enderror
+                                        </div> --}}
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">JENIS KELAMIN</label>
+                                            <br>
+                                            <input type="radio" name="jenis_kelamin" value="Laki-laki"> Laki-laki<br>
+                                            <input type="radio" name="jenis_kelamin" value="Perempuan"> Perempuan<br>                                            
                                         </div>
 
                                         <div class="form-group">

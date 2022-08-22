@@ -11,13 +11,12 @@ use Yajra\DataTables\DataTables;
 class GuestController extends Controller
 {
     public function index()
-    {
-        $guests = Guest::get();
+    {        
         if (request()->ajax()) {
-            return DataTables::of($guests)
+            return DataTables::of(Guest::query())
             ->make(true);
         }
-        return view('guest.index', compact('guests'));
+        return view('guest.index');
     }
 
     public function create()
