@@ -188,8 +188,15 @@
                         
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Tanggal:</strong>
+                                <strong>Tanggal Kegiatan:</strong>
                                 {!! $program->tanggal !!}
+                             </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Waktu Kegiatan:</strong>
+                                {!! $program->waktu !!}
                              </div>
                         </div>
 

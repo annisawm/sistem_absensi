@@ -11,7 +11,11 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">\
+    
+    <!-- Bootstrap DateTimePicker -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css" rel="stylesheet"></link>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -181,7 +185,7 @@
                                             <input type="text"
                                                 class="form-control @error('acara') is-invalid @enderror"
                                                 name="acara" value="{{ old('acara') }}"
-                                                placeholder="Masukkan acara">
+                                                placeholder="Masukkan Nama Acara">
                                             <div>
                                             <!-- error message untuk title -->
                                             @error('acara')
@@ -194,13 +198,28 @@
 
                                         <div class="form-group">
                                             <label class="font-weight-bold">TANGGAL KEGIATAN</label>
-                                            <input id="datetimepicker" type="date"
+                                            <input id="tanggal" type="text"
                                                 class="form-control @error('tanggal') is-invalid @enderror"
                                                 name="tanggal" value="{{ old('tanggal') }}"
-                                                placeholder="Masukkan Tanggal">
+                                                placeholder="Masukkan Tanggal Kegiatan">
 
                                             <!-- error message untuk title -->
                                             @error('tanggal')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">WAKTU KEGIATAN</label>
+                                            <input id="waktu" type="text"
+                                                class="form-control @error('waktu') is-invalid @enderror"
+                                                name="waktu" value="{{ old('waktu') }}"
+                                                placeholder="Masukkan Waktu Kegiatan">
+
+                                            <!-- error message untuk title -->
+                                            @error('waktu')
                                                 <div class="alert alert-danger mt-2">
                                                     {{ $message }}
                                                 </div>
@@ -212,7 +231,7 @@
                                             <input type="text"
                                                 class="form-control @error('tempat') is-invalid @enderror"
                                                 name="tempat" value="{{ old('tempat') }}"
-                                                placeholder="Masukkan Tempat">
+                                                placeholder="Masukkan Tempat Kegiatan">
 
                                             <!-- error message untuk title -->
                                             @error('tempat')
@@ -252,13 +271,29 @@
     <!-- bs-custom-file-input -->
     <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>    
-    <!-- Page specific script -->
-    jQuery('#datetimepicker').datetimepicker();
-   
+    <script src="../../dist/js/adminlte.min.js"></script>   
 </body>
-    <link rel="stylesheet" type="text/css" href="../../jquery.datetimepicker.css"/>
-    <script src="../../jquery.js"></script>
-    <script src="../../../build/jquery.datetimepicker.full.min.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
+    <script type="text/javascript">
+    $(function () {
+    //   $('#tanggal').datetimepicker({
+    //    format: 'DD MMMM YYYY HH:mm',
+    //   });
+  
+    $('#tanggal').datetimepicker({
+        format: 'dddd, D MMMM YYYY',
+        locale: 'id',
+    });
+
+  
+    $('#waktu').datetimepicker({
+        format: 'HH:mm'
+    });
+    });
+</script>
 
 </html>

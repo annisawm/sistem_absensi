@@ -17,6 +17,7 @@ class CreateProgramsTable extends Migration
             $table->id();
             $table->string('acara');
             $table->string('tanggal');
+            $table->string('waktu');
             $table->string('tempat');
             $table->timestamps();
         });

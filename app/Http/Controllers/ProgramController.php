@@ -26,6 +26,7 @@ class ProgramController extends Controller
         $this->validate($request, [
             'acara'     => 'required',
             'tanggal'     => 'required',
+            'waktu' => 'required',
             'tempat'   => 'required',
         ]);
 
@@ -54,6 +55,7 @@ class ProgramController extends Controller
         $this->validate($request, [
             'acara'     => 'required',
             'tanggal'     => 'required',
+            'waktu' => 'required',
             'tempat'   => 'required',
         ]);
 

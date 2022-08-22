@@ -174,13 +174,13 @@
                             <div class="card border-0 shadow rounded">
                                 <div class="card-body">
                                     <a href="{{ route('program.create') }}" class="btn btn-md btn-success mb-3">TAMBAH</a>
-                                    <a href="/" class="btn btn-md btn-success mb-3">BACK</a>
                                     <table class="table table-bordered">
                                         <thead>
                                             <tr>
                                                 <th scope="col">NO</th>
                                                 <th scope="col">ACARA</th>
-                                                <th scope="col">TANGGAL</th>
+                                                <th scope="col">TANGGAL KEGIATAN</th>
+                                                <th scope="col">WAKTU KEGIATAN</th>
                                                 <th scope="col">TEMPAT</th> 
                                                 <th scope="col">ACTION</th>                                             
                                             </tr>
@@ -191,6 +191,7 @@
                                                     <td>{!! ++$i !!}</td>
                                                     <td>{!! $program->acara !!}</td>
                                                     <td>{!! $program->tanggal !!}</td>
+                                                    <td>{!! $program->waktu !!}</td>
                                                     <td>{!! $program->tempat !!}</td>
                                                     <td class="text-center">
                                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');"

@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+    <!-- Bootstrap DateTimePicker -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css" rel="stylesheet"></link>
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -183,7 +187,7 @@
                                             <input type="text"
                                                 class="form-control @error('acara') is-invalid @enderror"
                                                 name="acara" value="{{ old('acara', $program->acara) }}"
-                                                placeholder="Masukkan acara">
+                                                placeholder="Masukkan Nama Acara">
 
 
                                             @error('acara')
@@ -194,14 +198,30 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="font-weight-bold">TANGGAL</label>
-                                            <input type="date"
+                                            <label class="font-weight-bold">TANGGAL KEGIATAN</label>
+                                            <input id="tanggal" type="text"
                                                 class="form-control @error('tanggal') is-invalid @enderror"
                                                 name="tanggal" value="{{ old('tanggal', $program->tanggal) }}"
-                                                placeholder="Masukkan Tanggal">
+                                                placeholder="Masukkan Tanggal Kegiatan">
 
 
                                             @error('tanggal')
+                                                <div class="alert alert-danger mt-2">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        
+                                        <div class="form-group">
+                                            <label class="font-weight-bold">WAKTU KEGIATAN</label>
+                                            <input id="waktu" type="text"
+                                                class="form-control @error('waktu') is-invalid @enderror"
+                                                name="waktu" value="{{ old('waktu', $program->waktu) }}"
+                                                placeholder="Masukkan Waktu Kegiatan">
+
+
+                                            @error('waktu')
                                                 <div class="alert alert-danger mt-2">
                                                     {{ $message }}
                                                 </div>
@@ -256,5 +276,26 @@
     <!-- Page specific script -->
     <script></script>
 </body>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
+    <script type="text/javascript">
+    $(function () {
+    //   $('#tanggal').datetimepicker({
+    //    format: 'DD MMMM YYYY HH:mm',
+    //   });
+  
+    $('#tanggal').datetimepicker({
+        format: 'dddd, D MMMM YYYY',
+        locale: 'id',
+    });
 
+  
+    $('#waktu').datetimepicker({
+        format: 'HH:mm'
+    });
+    });
+</script>
 </html>
