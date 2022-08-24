@@ -170,8 +170,8 @@
                 <div class="container mt-5 mb-5">
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
-                            <div class="pull-left">
-                                <h2> Show Program</h2>
+                            <div class="pull-left"> 
+                                <h2> Detail Kegiatan</h2>
                             </div>
                             <div class="pull-right">
                                 <a class="btn btn-primary" href="{{ route('program.index') }}"> Back</a>
