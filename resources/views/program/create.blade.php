@@ -1,299 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.master')
+@section('title')
+    <title> Tambah Data </title>
+@endsection
+@push('js')
+<!-- Bootstrap DateTimePicker -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+@endpush
+@section('header')
+    <h1>Formulir Daftar Kegiatan</h1>
+@endsection
+@section('subheader')
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">Formulir Daftar Kegiatan</li>
+@endsection
+@section('content')
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card border-0 shadow rounded">
+                <div class="card-body">
+                    <form action="{{ route('program.store') }}" method="POST"
+                        enctype="multipart/form-data">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">    
-    <title>Tambah Data</title>
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">\
-    
-    <!-- Bootstrap DateTimePicker -->
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"></link>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css" rel="stylesheet"></link>
-</head>
-
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                            class="fas fa-bars"></i></a>
-                </li>
-                <!-- HEADER -->
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
+                        @csrf
+                        <div class="form-group">
+                            <label class="font-weight-bold">ACARA</label>
+                            <input type="text"
+                                class="form-control @error('acara') is-invalid @enderror"
+                                name="acara" value="{{ old('acara') }}"
+                                placeholder="Masukkan Nama Acara">
+                            <div>
+                            <!-- error message untuk title -->
+                            @error('acara')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-                <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge"></span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header"></span>
-                        <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
-                            <i class="fas fa-envelope mr-2"></i>
-                            <span class="float-right text-muted text-sm"></span>
-                        </a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.navbar -->
-
-        <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
-                <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
-            </a>
-
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">User</a>
-                    </div>
-                </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
+                            @enderror
                         </div>
-                    </div>
+
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">TANGGAL KEGIATAN</label>
+                            <input id="tanggal" type="text"
+                                class="form-control @error('tanggal') is-invalid @enderror"
+                                name="tanggal" value="{{ old('tanggal') }}"
+                                placeholder="Masukkan Tanggal Kegiatan">
+
+                            <!-- error message untuk title -->
+                            @error('tanggal')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">WAKTU KEGIATAN</label>
+                            <input id="waktu" type="text"
+                                class="form-control @error('waktu') is-invalid @enderror"
+                                name="waktu" value="{{ old('waktu') }}"
+                                placeholder="Masukkan Waktu Kegiatan">
+
+                            <!-- error message untuk title -->
+                            @error('waktu')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="font-weight-bold">Tempat</label>
+                            <input type="text"
+                                class="form-control @error('tempat') is-invalid @enderror"
+                                name="tempat" value="{{ old('tempat') }}"
+                                placeholder="Masukkan Tempat Kegiatan">
+
+                            <!-- error message untuk title -->
+                            @error('tempat')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                            
+                        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+                        <button type="reset" class="btn btn-md btn-warning">RESET</button>
+                    </form>
                 </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="../../index3.html" class="nav-link">
-                                <i class="nav-icon fas fa-columns"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="../forms/general.html" class="nav-link active">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>Form Daftar Kegiatan</p>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
             </div>
-            <!-- /.sidebar -->
-        </aside>
-
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Formulir Daftar Kegiatan</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Formulir Daftar Kegiatan</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div><!-- /.container-fluid -->
-            </section>
-
-            <!-- Main content -->
-            <section class="content">
-                <div class="container mt-5 mb-5">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card border-0 shadow rounded">
-                                <div class="card-body">
-                                    <form action="{{ route('program.store') }}" method="POST"
-                                        enctype="multipart/form-data">
-
-                                        @csrf
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">ACARA</label>
-                                            <input type="text"
-                                                class="form-control @error('acara') is-invalid @enderror"
-                                                name="acara" value="{{ old('acara') }}"
-                                                placeholder="Masukkan Nama Acara">
-                                            <div>
-                                            <!-- error message untuk title -->
-                                            @error('acara')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">TANGGAL KEGIATAN</label>
-                                            <input id="tanggal" type="text"
-                                                class="form-control @error('tanggal') is-invalid @enderror"
-                                                name="tanggal" value="{{ old('tanggal') }}"
-                                                placeholder="Masukkan Tanggal Kegiatan">
-
-                                            <!-- error message untuk title -->
-                                            @error('tanggal')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">WAKTU KEGIATAN</label>
-                                            <input id="waktu" type="text"
-                                                class="form-control @error('waktu') is-invalid @enderror"
-                                                name="waktu" value="{{ old('waktu') }}"
-                                                placeholder="Masukkan Waktu Kegiatan">
-
-                                            <!-- error message untuk title -->
-                                            @error('waktu')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="font-weight-bold">Tempat</label>
-                                            <input type="text"
-                                                class="form-control @error('tempat') is-invalid @enderror"
-                                                name="tempat" value="{{ old('tempat') }}"
-                                                placeholder="Masukkan Tempat Kegiatan">
-
-                                            <!-- error message untuk title -->
-                                            @error('tempat')
-                                                <div class="alert alert-danger mt-2">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                            
-                                        <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                                        <button type="reset" class="btn btn-md btn-warning">RESET</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2022 <a href="http://kominfo.situbondokab.go.id/">Dinas Komunikasi, Informatika
-                    dan
-                    Persandian</a>
-        </footer>
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
-    <!-- ./wrapper -->
-    
-    <!-- jQuery -->
-    <script src="../../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- bs-custom-file-input -->
-    <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dist/js/adminlte.min.js"></script>   
-</body>
-    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
-    <script type="text/javascript">
-    $(function () {
-    //   $('#tanggal').datetimepicker({
-    //    format: 'DD MMMM YYYY HH:mm',
-    //   });
-  
-    $('#tanggal').datetimepicker({
-        format: 'dddd, D MMMM YYYY',
-        locale: 'id',
-    });
+</div>
+@endsection
+@push('js')
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/id.js"></script>
+<script type="text/javascript">
+$(function () {
+//   $('#tanggal').datetimepicker({
+//    format: 'DD MMMM YYYY HH:mm',
+//   });
 
-  
-    $('#waktu').datetimepicker({
-        format: 'HH:mm'
-    });
-    });
+$('#tanggal').datetimepicker({
+    format: 'dddd, D MMMM YYYY',
+    locale: 'id',
+});
+
+
+$('#waktu').datetimepicker({
+    format: 'HH:mm'
+});
+});
 </script>
-
-</html>
+@endpush
