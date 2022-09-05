@@ -13,7 +13,7 @@ class ProgramController extends Controller
     {
         $programs = Program::latest()->paginate(10);
         return view('program.index', compact('programs'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);;
+            ->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
     public function create()
@@ -22,41 +22,41 @@ class ProgramController extends Controller
     }
 
     public function store(Request $request)
-    {       
+    {
         $this->validate($request, [
-            'acara'     => 'required',
-            'tanggal'     => 'required',
+            'acara' => 'required',
+            'tanggal' => 'required',
             'waktu' => 'required',
-            'tempat'   => 'required',
+            'tempat' => 'required',
         ]);
 
         $program = program::create($request->all());
 
-        if($program){
+        if ($program) {
             return redirect()->route('program.index')->with(['success' => 'Data Kegiatan Berhasil Disimpan!']);
-        }else{
+        } else {
             return redirect()->route('program.index')->with(['error' => 'Data Kegiatan Gagal Disimpan!']);
-        }   
+        }
     }
 
     public function show(program $program)
     {
         return view('program.show', compact('program'));
-    } 
+    }
 
     public function edit(program $program)
     {
-        return view('program.edit', compact('program'));  
+        return view('program.edit', compact('program'));
     }
 
 
     public function update(Request $request, program $program)
     {
         $this->validate($request, [
-            'acara'     => 'required',
-            'tanggal'     => 'required',
+            'acara' => 'required',
+            'tanggal' => 'required',
             'waktu' => 'required',
-            'tempat'   => 'required',
+            'tempat' => 'required',
         ]);
 
 
@@ -64,23 +64,23 @@ class ProgramController extends Controller
 
         $program->update($request->all());
 
-        if($program){
-        
+        if ($program) {
+
             return redirect()->route('program.index')->with(['success' => 'Data Kegiatan Berhasil Diupdate!']);
-        }else{
-        
+        } else {
+
             return redirect()->route('program.index')->with(['error' => 'Data Kegiatan Gagal Diupdate!']);
         }
-    }   
+    }
 
     public function destroy($id)
     {
         $program = program::findOrFail($id);
         $program->delete();
 
-        if($program){ 
+        if ($program) {
             return redirect()->route('program.index')->with(['success' => 'Data Kegiatan Berhasil Dihapus!']);
-        }else{
+        } else {
             return redirect()->route('program.index')->with(['error' => 'Data Kegiatan Gagal Dihapus!']);
         }
     }

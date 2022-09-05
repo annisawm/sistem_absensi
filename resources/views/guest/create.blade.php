@@ -28,23 +28,23 @@
                                     <option value="2">Non PNS</option>
                                 </select>
                                 @error('nip')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">NIP</label>
                                 <input type="text" id="nip" disabled
-                                    class="form-control @error('nip') is-invalid @enderror" name="nip"
-                                    value="{{ old('nip') }}" placeholder="Masukkan NIP">
+                                       class="form-control @error('nip') is-invalid @enderror" name="nip"
+                                       value="{{ old('nip') }}" placeholder="Masukkan NIP">
 
                                 <!-- error message untuk title -->
                                 @error('nip')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
 
@@ -52,13 +52,13 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">NAMA</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror"
-                                    name="nama" value="{{ old('nama') }}" placeholder="Masukkan Nama">
+                                       name="nama" value="{{ old('nama') }}" placeholder="Masukkan Nama">
 
                                 <!-- error message untuk title -->
                                 @error('nama')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
 
@@ -87,53 +87,53 @@
                             <div class="form-group">
                                 <label class="font-weight-bold">NAMA INSTANSI</label>
                                 <input type="text" class="form-control @error('nama_instansi') is-invalid @enderror"
-                                    name="nama_instansi" value="{{ old('nama_instansi') }}"
-                                    placeholder="Masukkan Nama Instansi">
+                                       name="nama_instansi" value="{{ old('nama_instansi') }}"
+                                       placeholder="Masukkan Nama Instansi">
 
                                 <!-- error message untuk title -->
                                 @error('instansi')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">JABATAN</label>
                                 <input type="text" class="form-control @error('jabatan') is-invalid @enderror"
-                                    name="jabatan" value="{{ old('jabatan') }}" placeholder="Masukkan Jabatan">
+                                       name="jabatan" value="{{ old('jabatan') }}" placeholder="Masukkan Jabatan">
 
                                 <!-- error message untuk title -->
                                 @error('jabatan')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">NO.HP</label>
                                 <input type="text" class="form-control @error('no_hp') is-invalid @enderror"
-                                    name="no_hp" value="{{ old('no_hp') }}" placeholder="Masukkan No.HP">
+                                       name="no_hp" value="{{ old('no_hp') }}" placeholder="Masukkan No.HP">
 
                                 <!-- error message untuk title -->
                                 @error('no_hp')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">TTD</label>
                                 <input type="text" class="form-control @error('ttd') is-invalid @enderror" name="ttd"
-                                    value="{{ old('ttd') }}" placeholder="Masukkan TTD">
+                                       value="{{ old('ttd') }}" placeholder="Masukkan TTD">
 
                                 <!-- error message untuk title -->
                                 @error('ttd')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
@@ -148,15 +148,15 @@
 
 @push('js')
     <script>
-        $("#status").change(function() {
+        $("#status").change(function () {
             var id = $(this).val();
             // if (id==1){
-            //     $('#nip').prop("disabled", false);                
+            //     $('#nip').prop("disabled", false);
             // } else if(id==2){
             //     $('#nip').prop("disabled", true);
             // } else if(id==0){
             //     $('#nip').prop("disabled", true);
-            // }         
+            // }
 
             // TERNARY CONDITION
             id == 1 ? $('#nip').prop("disabled", false) : $('#nip').prop("disabled", true);

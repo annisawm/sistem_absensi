@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Guest extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'nip','nama', 'jenis_kelamin', 'nama_instansi', 'jabatan', 'no_hp', 'ttd'
+        'nip', 'nama', 'jenis_kelamin', 'nama_instansi', 'jabatan', 'no_hp', 'ttd'
     ];
 
     // protected $appends = [
@@ -17,7 +18,7 @@ class Guest extends Model
     // ];
 
     protected $attributes = [
-        'nip'=>null
+        'nip' => null
     ];
 
     // public function getJkAttribute()
@@ -28,6 +29,6 @@ class Guest extends Model
     //     } else {
     //         $jk='Perempuan';
     //     }
-    //     return ucfirst($jk);        
+    //     return ucfirst($jk);
     // }
 }

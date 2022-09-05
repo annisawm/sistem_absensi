@@ -24,15 +24,15 @@
                         <a href="{{ route('guest.create') }}" class="btn btn-md btn-success mb-3">TAMBAH</a>
                         <table class="table table-bordered" id="tabel_guest">
                             <thead>
-                                <tr>
-                                    <th scope="col">NIP</th>
-                                    <th scope="col">NAMA</th>
-                                    <th scope="col">JENIS KELAMIN(L/P)</th>
-                                    <th scope="col">NAMA INSTANSI</th>
-                                    <th scope="col">JABATAN</th>
-                                    <th scope="col">NO.HP</th>
-                                    <th scope="col">TTD</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">NIP</th>
+                                <th scope="col">NAMA</th>
+                                <th scope="col">JENIS KELAMIN(L/P)</th>
+                                <th scope="col">NAMA INSTANSI</th>
+                                <th scope="col">JABATAN</th>
+                                <th scope="col">NO.HP</th>
+                                <th scope="col">TTD</th>
+                            </tr>
                             </thead>
                         </table>
                     </div>
@@ -54,15 +54,15 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var dt = $('#tabel_guest').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('guest.index') }}',
                 columns: [{
-                        data: 'nip',
-                        name: 'nip'
-                    },
+                    data: 'nip',
+                    name: 'nip'
+                },
                     {
                         data: 'nama',
                         name: 'nama'

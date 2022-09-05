@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title')    
+@section('title')
     <title>Formulir Daftar Kegiatan</title>
 @endsection
 @section('subheader')
@@ -13,62 +13,62 @@
     <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endpush
 @section('content')
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left"> 
-                <h2> Detail Kegiatan</h2>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <div class="pull-left">
+                    <h2> Detail Kegiatan</h2>
+                    <br>
+                </div>
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="{{ route('program.index') }}"> Back</a>
+                </div>
                 <br>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('program.index') }}"> Back</a>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Acara: </strong>
+                    {!! $program->acara !!}
+                </div>
             </div>
-            <br>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Tanggal Kegiatan: </strong>
+                    {!! $program->tanggal !!}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Waktu Kegiatan: </strong>
+                    {!! $program->waktu !!}
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Tempat: </strong>
+                    {!! $program->tempat !!}
+                </div>
+                <br>
+            </div>
+            <a class="btn btn-primary" href="../../guest"> Create Link</a>
+            &nbsp &nbsp &nbsp
+            <a class="btn btn-primary" href="#"> QR Code</a>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Acara: </strong>
-                {!! $program->acara !!}
-            </div>
-        </div>
-        
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tanggal Kegiatan: </strong>
-                {!! $program->tanggal !!}
-             </div>
-        </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Waktu Kegiatan: </strong>
-                {!! $program->waktu !!}
-             </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Tempat:     </strong>
-                {!! $program->tempat !!}
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Daftar Hadir Kegiatan</h3>
             </div>
-            <br>
-        </div>
-        <a class="btn btn-primary" href="../../guest"> Create Link</a>
-        &nbsp &nbsp &nbsp
-        <a class="btn btn-primary" href="#"> QR Code</a>
-    </div>
- </div>
- 
-<div class="col-12">
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Daftar Hadir Kegiatan</h3>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered" id="tabel_guest">
-                <thead>
+            <div class="card-body">
+                <table class="table table-bordered" id="tabel_guest">
+                    <thead>
                     <tr>
                         <th scope="col">NIP</th>
                         <th scope="col">NAMA</th>
@@ -78,11 +78,11 @@
                         <th scope="col">NO.HP</th>
                         <th scope="col">TTD</th>
                     </tr>
-                </thead>
-            </table>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 @endsection
 
 @push('js')
@@ -98,15 +98,15 @@
     <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             var dt = $('#tabel_guest').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('guest.index') }}',
                 columns: [{
-                        data: 'nip',
-                        name: 'nip'
-                    },
+                    data: 'nip',
+                    name: 'nip'
+                },
                     {
                         data: 'nama',
                         name: 'nama'
