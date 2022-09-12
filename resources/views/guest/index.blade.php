@@ -22,6 +22,7 @@
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
                         <a href="{{ route('guest.create') }}" class="btn btn-md btn-success mb-3">TAMBAH</a>
+                        <a href="/guest/cetak" class="btn btn-md btn-success mb-3" target="_blank">Cetak PDF</a>
                         <table class="table table-bordered" id="tabel_guest">
                             <thead>
                             <tr>

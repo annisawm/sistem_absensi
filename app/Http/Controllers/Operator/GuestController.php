@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Guest;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class GuestController extends Controller
@@ -17,6 +18,14 @@ class GuestController extends Controller
                 ->make(true);
         }
         return view('guest.index');
+    }
+
+    public function cetak()
+    {
+        $guest = guest::all();
+
+    	$pdf = PDF\Pdf::loadview('guest.cetak',['guest'=>$guest]);
+    	return $pdf->stream();
     }
 
     public function create()
