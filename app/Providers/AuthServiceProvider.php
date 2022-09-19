@@ -23,22 +23,22 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot()
     {        
-        $this->registerPolicies();
-        Gate::define('super_admin', function ($user) {
-            return $user->role_id == 1;
-        });
-        Gate::define('admin', function ($user) {
-            return $user->role_id == 2;
-        });
-        Gate::define('operator', function ($user) {
-            return $user->role_id == 3;
-        });
-        Gate::define('pejabat_penanggung_jawab', function ($user) {
-            return $user->role_id == 4;
-        });
-        Gate::define('pejabat', function ($user) {
-            return $user->role_id == 5;
-        });
+        // $this->registerPolicies();
+        // Gate::define('super_admin', function ($user) {
+        //     return $user->role_id == 1;
+        // });
+        // Gate::define('admin', function ($user) {
+        //     return $user->role_id == 2;
+        // });
+        // Gate::define('operator', function ($user) {
+        //     return $user->role_id == 3;
+        // });
+        // Gate::define('pejabat_penanggung_jawab', function ($user) {
+        //     return $user->role_id == 4;
+        // });
+        // Gate::define('pejabat', function ($user) {
+        //     return $user->role_id == 5;
+        // });
 
         //
     }

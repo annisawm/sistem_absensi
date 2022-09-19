@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Operator\GuestController;
 use App\Http\Controllers\Operator\ProgramController;
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,28 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing.index');
 });
+Route::get('login', 'App\Http\Controllers\Auth\AuthController@index')->name('login');
+Route::post('proses_login', 'App\Http\Controllers\Auth\AuthController@proses_login')->name('proses_login');
+Route::get('logout', 'App\Http\Controllers\Auth\AuthController@logout')->name('logout');
+
+Route::group(['middleware' => ['auth']], function () {
+    // Route::group(['middleware' => ['cek_login::super_admin']], function () {
+    //     Route::resource('super_admin',SuperAdminController::class );
+    // });
+    // Route::group(['middleware' => ['cek_login::admin']], function () {
+    //     Route::resource('super_admin',AdminController::class );
+    // });
+    Route::group(['middleware' => ['cek_login::operator']], function () {
+        Route::resource('super_admin',ProgramController::class );
+    });
+    // Route::group(['middleware' => ['cek_login::pejabat_pj']], function () {
+    //     Route::resource('super_admin',PejabatPJController::class );
+    // });
+    // Route::group(['middleware' => ['cek_login::pejabat']], function () {
+    //     Route::resource('super_admin',PejabatController::class );
+    // });
+});
+
 
 Route::get('/guest/cetak', [GuestController::class, 'cetak']);
 Route::resource('/guest', GuestController::class);
