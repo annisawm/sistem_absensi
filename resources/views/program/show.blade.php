@@ -22,6 +22,7 @@
                 </div>
                 <div class="pull-right">
                     <a class="btn btn-primary" href="{{ route('program.index') }}"> Back</a>
+                    <a href="/program/cetak" class="btn btn-primary" target="_blank">Cetak Kegiatan PDF</a>
                 </div>
                 <br>
             </div>

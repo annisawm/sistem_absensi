@@ -20,7 +20,7 @@
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
-        <a class="btn btn-primary btn-xl text-uppercase" href="guest">Login</a>
+        <a class="btn btn-primary btn-xl text-uppercase" href="login">Login</a>
     </div>
 </header>
 <!-- Footer-->
