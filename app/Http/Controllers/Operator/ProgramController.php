@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Operator;
 
 use App\Http\Controllers\Controller;
+use App\Models\Guest;
 use App\Models\Program;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class ProgramController extends Controller
 {
@@ -13,6 +15,14 @@ class ProgramController extends Controller
         $programs = Program::latest()->paginate(10);
         return view('program.index', compact('programs'))
             ->with('i', (request()->input('page', 1) - 1) * 5);;
+    }
+
+    public function cetak()
+    {
+        $program = program::all();
+
+        $pdf = PDF\Pdf::loadview('program.cetak',['program'=>$program]);
+        return $pdf->stream();
     }
 
     public function create()
