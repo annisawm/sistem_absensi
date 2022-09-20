@@ -29,7 +29,7 @@ class AuthController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('guest')
+            return redirect()->intended('home')
                 ->withSuccess('You have Successfully loggedin');
         }
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
@@ -43,7 +43,7 @@ class AuthController extends Controller
         ]);
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("guest")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("home")->withSuccess('Great! You have Successfully loggedin');
     }
 
     public function create(array $data)
